@@ -388,6 +388,31 @@
   .site-content.locked{
     opacity:0;
   }
+
+  /* MUSIC TOGGLE */
+  .music-toggle{
+    position:fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: var(--cream);
+    color: var(--rose-deep);
+    font-size: 1.3rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow: 0 6px 18px rgba(185,100,126,0.15);
+    transition: transform 0.2s ease;
+  }
+
+  .music-toggle:hover{
+    transform: scale(1.08);
+  }
 </style>
 </head>
 <body>
@@ -410,6 +435,10 @@
 
 <div class="petals" id="petals"></div>
 
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <!-- HERO -->
 <section class="hero">
   <div class="eyebrow">A little celebration, just for you</div>
@@ -421,7 +450,7 @@
 
 <!-- MESSAGE -->
 <section class="message">
-  <h2>Happy Birthday, A I</h2>
+  <h2>Happy Birthday, Jaan</h2>
   <p>Every year on this day, the world gets a little brighter — because it's the day it got you in it. I don't think you fully know how much warmth you bring into everything around you, even on the days you feel like you don't.</p>
   <p>I just want today to feel as soft and special as you make my days feel. No stress, no overthinking — just you, being celebrated exactly as you deserve.</p>
   <p>I'm so grateful to be the one who gets to call you mine, and I can't wait for all the birthdays we'll get to spend together from here on.</p>
@@ -483,6 +512,8 @@
   <p>Happy Birthday, Amna. Today and always — I love you.</p>
 </footer>
 
+<button class="music-toggle" id="musicToggle" title="Toggle music">🎵</button>
+
 </div>
 
 <script>
@@ -499,6 +530,10 @@
     if(lockInput.value.trim() === CORRECT_PASSWORD){
       lockScreen.classList.add('hidden');
       siteContent.classList.remove('locked');
+
+      const music = document.getElementById('bgMusic');
+      music.volume = 0.6;
+      music.play().catch(()=>{});
     } else {
       lockError.textContent = "Hmm, try again 🌷";
       lockInput.value = '';
@@ -558,6 +593,19 @@
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // Music toggle
+  const musicToggle = document.getElementById('musicToggle');
+  const bgMusic = document.getElementById('bgMusic');
+  musicToggle.addEventListener('click', function(){
+    if(bgMusic.paused){
+      bgMusic.play().catch(()=>{});
+      musicToggle.textContent = '🎵';
+    } else {
+      bgMusic.pause();
+      musicToggle.textContent = '🔇';
+    }
+  });
 </script>
 
 </body>
