@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday, Amna 🌸</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Italiana&family=Quicksand:wght@300;400;500&display=swap');
+
+  :root{
+    --rose: #d98ea3;
+    --rose-deep: #b9647e;
+    --cream: #fdf6f3;
+    --blush: #f7e3e1;
+    --plum: #5a3e4d;
+    --gold: #d4af7a;
+  }
+
+  *{margin:0; padding:0; box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    background: var(--cream);
+    color: var(--plum);
+    overflow-x:hidden;
+  }
+
+  /* Floating petals */
+  .petals{
+    position:fixed; inset:0; pointer-events:none; z-index:5; overflow:hidden;
+  }
+  .petal{
+    position:absolute;
+    top:-10%;
+    font-size:1.4rem;
+    opacity:0.7;
+    animation: fall linear infinite;
+    color: var(--rose);
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(360deg); }
+  }
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    background:
+      radial-gradient(circle at 20% 20%, var(--blush) 0%, transparent 45%),
+      radial-gradient(circle at 80% 80%, var(--blush) 0%, transparent 45%),
+      var(--cream);
+    padding: 2rem;
+  }
+
+  .eyebrow{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color: var(--rose-deep);
+    margin-bottom:1.2rem;
+  }
+
+  .hero h1{
+    font-family:'Italiana', serif;
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    line-height:1;
+    color: var(--rose-deep);
+    letter-spacing: 0.04em;
+  }
+
+  .hero .nickname{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-top:0.8rem;
+    color: var(--plum);
+    opacity:0.75;
+  }
+
+  .hero .date{
+    margin-top:2.5rem;
+    font-size:0.95rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color: var(--gold);
+    border-top:1px solid var(--gold);
+    border-bottom:1px solid var(--gold);
+    padding:0.6rem 1.5rem;
+  }
+
+  .scroll-hint{
+    position:absolute;
+    bottom:2.5rem;
+    font-size:0.85rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color: var(--rose-deep);
+    opacity:0.6;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(8px);}
+  }
+
+  /* SECTIONS */
+  section.message{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem;
+    text-align:center;
+  }
+
+  section.message h2{
+    font-family:'Italiana', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--rose-deep);
+    margin-bottom: 2rem;
+  }
+
+  section.message p{
+    font-family:'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+    line-height:1.9;
+    color: var(--plum);
+  }
+
+  section.message p + p{ margin-top:1.4rem; }
+
+  .signature{
+    margin-top:2.5rem;
+    font-family:'Italiana', serif;
+    font-size:1.6rem;
+    color: var(--gold);
+  }
+
+  /* COUNTDOWN */
+  .countdown-wrap{
+    background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 100%);
+    padding: 5rem 1.5rem;
+    text-align:center;
+  }
+
+  .countdown-wrap h2{
+    font-family:'Italiana', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--rose-deep);
+    margin-bottom:2.5rem;
+  }
+
+  .countdown{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap: 1.5rem;
+  }
+
+  .count-box{
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    min-width: 90px;
+    box-shadow: 0 8px 24px rgba(185,100,126,0.08);
+  }
+
+  .count-box .num{
+    font-family:'Italiana', serif;
+    font-size: 2.4rem;
+    color: var(--rose-deep);
+    display:block;
+  }
+
+  .count-box .label{
+    font-size:0.75rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color: var(--plum);
+    opacity:0.6;
+    margin-top:0.3rem;
+    display:block;
+  }
+
+  .countdown.done h2{ display:none; }
+
+  /* GALLERY OF WORDS */
+  .words{
+    max-width:900px;
+    margin:0 auto;
+    padding:6rem 1.5rem;
+    text-align:center;
+  }
+
+  .words h2{
+    font-family:'Italiana', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--rose-deep);
+    margin-bottom:3rem;
+  }
+
+  .word-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .word-card{
+    background: var(--blush);
+    border-radius: 16px;
+    padding: 2rem 1.2rem;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor:default;
+  }
+
+  .word-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(185,100,126,0.15);
+  }
+
+  .word-card .icon{
+    font-size:2rem;
+    display:block;
+    margin-bottom:0.8rem;
+  }
+
+  .word-card .word{
+    font-family:'Italiana', serif;
+    font-size:1.3rem;
+    color: var(--rose-deep);
+    margin-bottom:0.4rem;
+  }
+
+  .word-card .desc{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1rem;
+    line-height:1.6;
+    opacity:0.85;
+  }
+
+  /* FOOTER */
+  footer{
+    text-align:center;
+    padding: 4rem 1.5rem 5rem;
+  }
+
+  footer .heart{
+    font-size:2rem;
+    color: var(--rose-deep);
+    margin-bottom:1rem;
+    display:inline-block;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes pulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.15); }
+  }
+
+  footer p{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.2rem;
+    color: var(--plum);
+    opacity:0.7;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .petal, .scroll-hint, footer .heart{ animation:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* LOCK SCREEN */
+  .lock-screen{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(circle at 20% 20%, var(--blush) 0%, transparent 45%),
+      radial-gradient(circle at 80% 80%, var(--blush) 0%, transparent 45%),
+      var(--cream);
+    padding: 2rem;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+
+  .lock-screen.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+
+  .lock-card{
+    text-align:center;
+    max-width: 380px;
+    width:100%;
+  }
+
+  .lock-card .eyebrow{
+    margin-bottom: 0.6rem;
+  }
+
+  .lock-card h1{
+    font-family:'Italiana', serif;
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    color: var(--rose-deep);
+    margin-bottom: 1.6rem;
+  }
+
+  .lock-card p.hint{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    opacity:0.7;
+    margin-bottom: 2rem;
+  }
+
+  .lock-form{
+    display:flex;
+    flex-direction:column;
+    gap: 1rem;
+    align-items:center;
+  }
+
+  .lock-input{
+    width:100%;
+    max-width:240px;
+    text-align:center;
+    font-family:'Italiana', serif;
+    font-size:1.6rem;
+    letter-spacing:0.4em;
+    padding:0.8rem 1rem;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    background: var(--cream);
+    color: var(--plum);
+    outline:none;
+  }
+
+  .lock-input:focus{
+    border-color: var(--rose-deep);
+    box-shadow: 0 0 0 3px rgba(185,100,126,0.12);
+  }
+
+  .lock-btn{
+    font-family:'Quicksand', sans-serif;
+    font-weight:500;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    font-size:0.85rem;
+    padding:0.8rem 2.4rem;
+    border: 1px solid var(--rose-deep);
+    border-radius: 30px;
+    background: var(--rose-deep);
+    color: var(--cream);
+    cursor:pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
+
+  .lock-btn:hover{
+    background: var(--cream);
+    color: var(--rose-deep);
+    transform: translateY(-2px);
+  }
+
+  .lock-error{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color: var(--rose-deep);
+    font-size:0.95rem;
+    min-height:1.4em;
+  }
+
+  .site-content{
+    transition: opacity 0.6s ease;
+  }
+
+  .site-content.locked{
+    opacity:0;
+  }
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-card">
+    <div class="eyebrow">A little surprise awaits</div>
+    <h1>For Amna</h1>
+    <p class="hint">Hint: it's a date you'll never forget 💕</p>
+    <form class="lock-form" id="lockForm" autocomplete="off">
+      <input type="password" inputmode="numeric" maxlength="4" pattern="[0-9]*" class="lock-input" id="lockInput" placeholder="••••" />
+      <button type="submit" class="lock-btn">Unlock</button>
+      <div class="lock-error" id="lockError"></div>
+    </form>
+  </div>
+</div>
+
+<div class="site-content locked" id="siteContent">
+
+<div class="petals" id="petals"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">A little celebration, just for you</div>
+  <h1>Amna</h1>
+  <div class="nickname">"AI" — my favourite person in the world</div>
+  <div class="date">25th June · Her Day</div>
+  <div class="scroll-hint">scroll down ↓</div>
+</section>
+
+<!-- MESSAGE -->
+<section class="message">
+  <h2>Happy Birthday, Jaan</h2>
+  <p>Every year on this day, the world gets a little brighter — because it's the day it got you in it. I don't think you fully know how much warmth you bring into everything around you, even on the days you feel like you don't.</p>
+  <p>I just want today to feel as soft and special as you make my days feel. No stress, no overthinking — just you, being celebrated exactly as you deserve.</p>
+  <p>I'm so grateful to be the one who gets to call you mine, and I can't wait for all the birthdays we'll get to spend together from here on.</p>
+  <div class="signature">— Your Fav Person</div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-wrap">
+  <div id="countdownContainer">
+    <h2>Counting down to your day</h2>
+    <div class="countdown" id="countdown">
+      <div class="count-box"><span class="num" id="days">--</span><span class="label">Days</span></div>
+      <div class="count-box"><span class="num" id="hours">--</span><span class="label">Hours</span></div>
+      <div class="count-box"><span class="num" id="minutes">--</span><span class="label">Minutes</span></div>
+      <div class="count-box"><span class="num" id="seconds">--</span><span class="label">Seconds</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY I LOVE YOU -->
+<section class="words">
+  <h2>A few reasons, among many</h2>
+  <div class="word-grid">
+    <div class="word-card">
+      <span class="icon">🌷</span>
+      <div class="word">Your kindness</div>
+      <div class="desc">The way you care for the people around you, quietly and without expecting anything back.</div>
+    </div>
+    <div class="word-card">
+      <span class="icon">☀️</span>
+      <div class="word">Your warmth</div>
+      <div class="desc">You make even ordinary days feel a little lighter, just by being you.</div>
+    </div>
+    <div class="word-card">
+      <span class="icon">💫</span>
+      <div class="word">Your strength</div>
+      <div class="desc">How you carry so much with grace, even when no one notices the effort it takes.</div>
+    </div>
+    <div class="word-card">
+      <span class="icon">🤍</span>
+      <div class="word">Your laugh</div>
+      <div class="desc">It's one of my favourite sounds in the world — I hope to hear it all day today.</div>
+    </div>
+    <div class="word-card">
+      <span class="icon">🌙</span>
+      <div class="word">Your heart</div>
+      <div class="desc">Gentle, honest, and so full of love — I'm endlessly thankful it found its way to me.</div>
+    </div>
+    <div class="word-card">
+      <span class="icon">🌸</span>
+      <div class="word">Simply you</div>
+      <div class="desc">No list could ever really capture it. I just love you, exactly as you are.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="heart">♥</span>
+  <p>Happy Birthday, Amna. Today and always — I love you.</p>
+</footer>
+
+</div>
+
+<script>
+  // Lock screen logic
+  const CORRECT_PASSWORD = "2506";
+  const lockScreen = document.getElementById('lockScreen');
+  const siteContent = document.getElementById('siteContent');
+  const lockForm = document.getElementById('lockForm');
+  const lockInput = document.getElementById('lockInput');
+  const lockError = document.getElementById('lockError');
+
+  lockForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(lockInput.value.trim() === CORRECT_PASSWORD){
+      lockScreen.classList.add('hidden');
+      siteContent.classList.remove('locked');
+    } else {
+      lockError.textContent = "Hmm, try again 🌷";
+      lockInput.value = '';
+      lockInput.focus();
+    }
+  });
+</script>
+
+<script>
+  // Floating petals
+  const petalContainer = document.getElementById('petals');
+  const petalSymbols = ['🌸','🌷','♥'];
+  for(let i=0;i<18;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = petalSymbols[Math.floor(Math.random()*petalSymbols.length)];
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.fontSize = (0.9 + Math.random()*1.2) + 'rem';
+    p.style.animationDuration = (8 + Math.random()*10) + 's';
+    p.style.animationDelay = (Math.random()*10) + 's';
+    petalContainer.appendChild(p);
+  }
+
+  // Countdown to 25 June (next occurrence)
+  function getNextBirthday(){
+    const now = new Date();
+    let year = now.getFullYear();
+    let target = new Date(year, 5, 25, 0, 0, 0); // month is 0-indexed, June = 5
+    if(target < now){
+      target = new Date(year+1, 5, 25, 0, 0, 0);
+    }
+    return target;
+  }
+
+  function updateCountdown(){
+    const now = new Date();
+    const target = getNextBirthday();
+    const diff = target - now;
+
+    const container = document.getElementById('countdownContainer');
+
+    if(diff <= 0 || (now.getMonth()===5 && now.getDate()===25)){
+      container.innerHTML = '<h2 style="margin-bottom:0;">🎉 Today is the day! 🎉</h2>';
+      return;
+    }
+
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff / (1000*60*60)) % 24);
+    const m = Math.floor((diff / (1000*60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('days').textContent = d;
+    document.getElementById('hours').textContent = h.toString().padStart(2,'0');
+    document.getElementById('minutes').textContent = m.toString().padStart(2,'0');
+    document.getElementById('seconds').textContent = s.toString().padStart(2,'0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
